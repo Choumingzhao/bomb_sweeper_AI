@@ -3,6 +3,11 @@
 """This python code for the classic windows game Bomb Sweeper.
 
     I have no GUI experience before. So I just try to learn while coding.
+    
+    Please run it with IDLE if you are on Windows.
+    Every move need 3 instructions:
+        1. 'L'(or 'l') or 'R'(or 'r') for left click and right click in the pixel in the panel.
+        2,3. two integers between the 1-10, the row and column number of the panel.
 """
 
 import random
