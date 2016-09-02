@@ -3,15 +3,11 @@
 """This python code for the classic windows game Bomb Sweeper.
 
     I have no GUI experience before. So I just try to learn while coding.
-    
-    Please run it with IDLE if you are on Windows.
-    Every move need 3 instructions:
-        1. 'L'(or 'l') or 'R'(or 'r') for left click and right click in the pixel in the panel.
-        2,3. two integers between the 1-10, the row and column number of the panel.
 """
 
 import random
 import sys
+import string
 
 
 # def the new Class for each pixel of the panel
@@ -174,16 +170,22 @@ for numb in no_bomb_list:
 
 # Wait for user input and do something using functions.
 while True:
+    pop = """Input your mark status of this pixel:
+0 indicates the player have done nothing,
+1 indicates the player think this is a bomb,
+2 indicates the player think this has to be considered later)\n>"""
     refresh(panel)
     msg0 = input('>')
-    msg1 = int(input('>'))-1
-    msg2 = int(input('>'))-1
-    if msg0 == 'L' or msg0 == 'l':
-        l_click(msg1, msg2)
-        if panel[msg1][msg2].status == 0:
-            handleStatus0((msg1, msg2))
+    if msg0[0] in string.digits:
+        msg0 = int(msg0) - 1
+        msg1 = int(input('>'))-1
+        l_click(msg0, msg1)
+        if panel[msg0][msg1].status == 0:
+            handleStatus0((msg0, msg1))
     elif msg0 == 'R' or msg0 == 'r':
-        msg3 = int(input("Input your mark status of this pixel:\n>"))
+        msg1 = int(input('>'))-1
+        msg2 = int(input('>'))-1
+        msg3 = int(input(pop))
         r_click(msg1, msg2, msg3)
     else:
         print("Please input right instructions！")
